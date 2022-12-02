@@ -20,8 +20,9 @@ public final class Injector {
   }
   
   private func resolve<T>() -> T {
-    if factories.isEmpty, let registration = self as? InjectorRegistration {
+    if !isRegistered, let registration = self as? InjectorRegistration {
       registration.registerAll()
+      isRegistered = true
     }
     let key = String(describing: T.self)
     if dependencies[key] == nil {
