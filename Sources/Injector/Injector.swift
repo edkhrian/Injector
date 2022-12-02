@@ -6,11 +6,11 @@ public final class Injector {
   private var factories = [String: () -> Any]()
   private static var shared = Injector()
   
-  static func register<T>(_ factory: @escaping () -> T) {
+  static public func register<T>(_ factory: @escaping () -> T) {
     shared.register(factory)
   }
   
-  static func resolve<T>() -> T {
+  static public func resolve<T>() -> T {
     shared.resolve()
   }
   
